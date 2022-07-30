@@ -39,12 +39,16 @@ contract Lottery {
         require(msg.sender == manager);
         require(players.length >= 3);
 
-        uint r = random();
-        address payable winner;
-        uint index = r % players.length;
-        winner = players[index];
+        // uint r = random();
+        // address payable winner;
+        // uint index = r % players.length;
+        // winner = players[index];
 
-        winner.transfer(getBalance());
-        players = new address payable[](0); // resetting the lottery
+        //winner.transfer(getBalance());
+        //players = new address payable[](0); // resetting the lottery
+
+        // Refactor code
+        uint index = random() % players.length;
+        players[index].transfer(getBalance());
     }
 }
